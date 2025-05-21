@@ -8,22 +8,30 @@ const copyFile = () => {
     const fileCopy = params[1];
 
     if (!file || !fileCopy) {
+      // eslint-disable-next-line no-console
+      console.error('only 2 argumnts!');
+
       return;
     }
 
     fs.readFile(file, 'utf8', (error, data) => {
       if (error) {
-        return error.message;
+        // eslint-disable-next-line no-console
+        console.error(error.message);
+
+        return;
       }
 
       fs.writeFile(fileCopy, data, 'utf8', (err) => {
         if (err) {
-          return err.message;
+          // eslint-disable-next-line no-console
+          console.error(err.message);
         }
       });
     });
   } catch (e) {
-    return e.message;
+    // eslint-disable-next-line no-console
+    console.error(e.message);
   }
 };
 
